@@ -209,6 +209,6 @@ error_reporting(0);
                   </div>
                 </div><!-- /.modal-content -->
               </div><!-- /.modal-dialog -->
-          </div>';
+          </div> ';
     }    
 ?>
