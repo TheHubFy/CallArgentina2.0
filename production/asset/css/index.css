@@ -1,0 +1,21 @@
+td{
+    font-size: 12px;
+}
+th{
+    font-size: 12px;
+}
+#loading{
+    display: none;
+}
+#Click_simulado{
+    display: none;
+}
+#click_comments{
+    display: none;
+}
+#click_chat{
+    display: none;
+}
+#icon-new{
+    font-size: 24px;
+}
