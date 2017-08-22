@@ -11,29 +11,33 @@
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                       <thead>
                       <tr>
-                          <th>Número</th>
-                          <th>Estado</th>
-                          <th>Fecha traslado</th>
-                          <th>Motivo</th>
-                          <th>Código</th>
-                          <th>DNI</th>
-                          <th>Número</th>
-                          <th>Nombre</th>
-                          <th>Edad</th>
-                          <th>Género</th>
-                          <th>Diagnóstico</th>
-                          <th>Nombre</th>
-                          <th>Domicilio</th>
-                          <th>Número</th>
-                          <th>Provincia</th>
-                          <th>Partido</th>
-                          <th>Localidad</th>
-                          <th>Institución</th>
-                          <th>Domicilio</th>
-                          <th>Número</th>
-                          <th>Provincia</th>
-                          <th>Partido</th>
-                          <th>Localidad</th>
+                          <th>Traslado[Número]</th>
+                          <th>Traslado[Estado]</th>
+                          <th>Traslado[Fecha]</th>
+                          <th>Traslado[Motivo]</th>
+                          <th>Traslado[Código]</th>
+                          
+                          <th>Afiliado[DNI]</th>
+                          <th>Afiliado[Número]</th>
+                          <th>Afiliado[Nombre]</th>
+                          <th>Afiliado[Edad]</th>
+                          <th>Afiliado[Género]</th> 
+                          
+                          <th>ORIGEN->[Diagnóstico]</th>
+                          <th>ORIGEN->[Nombre]</th>
+                          <th>ORIGEN->[Domicilio]</th>
+                          <th>ORIGEN->[Número]</th>
+                          <th>ORIGEN->[Provincia]</th>
+                          <th>ORIGEN->[Partido]</th>
+                          <th>ORIGEN->[Localidad]</th>
+
+                          <th>DESTINO->[Institución]</th>
+                          <th>DESTINO->[Domicilio]</th>
+                          <th>DESTINO->[Número]</th>
+                          <th>DESTINO->[Provincia]</th>
+                          <th>DESTINO->[Partido]</th>
+                          <th>DESTINO->[Localidad]</th>
+
                           <th>Retorno</th>
                           <th>Espera</th>
                           <th>Quien llama</th>
@@ -55,10 +59,10 @@
 			SELECT * 	
 			FROM t_trasladoc
 			WHERE c_estado = 9
-			AND c_fechainicio >=  '2017-05-17'
-			ORDER BY c_trfecha
+			AND c_fechainicio >=  '2017-08-01'
+			ORDER BY c_trfecha 
             ";
-
+//2017-05-17
     $deri=mysql_query($sql,$link);
     while($row_tras=mysql_fetch_array($deri)){
         if($row_tras["c_estado"]=='0'){$estado = "NO DEFINIDO";}else if($row_tras["c_estado"] == '3'){$estado = 'PENDIENTE';}else if($row_tras["c_estado"] == '9'){$estado = 'OBSERVADO';}else{$estado = "UNDEFINED";}
@@ -103,7 +107,7 @@
                       <a href="http://www.call-argentina.com.ar/aprobaciones/derivacion/mapa.php?tipo=segundonivel&nro='.$row_tras["c_nrotraslado"].'" target="_blank" class="btn btn-default" ><i class="glyphicon glyphicon-road"></i> Ruta </a>
                       <a href="javascript:viewer('.$row_tras["c_nrotraslado"].',\'images\', \'2\')" class="btn btn-default" ><i class="glyphicon glyphicon-picture"></i> Generar visor </a>
                       <a href="javascript:viewer('.$row_tras["c_nrotraslado"].',\'comentarios\', \'2\')" class="btn btn-default" ><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Comentarios </a>
-                      <a href="javascript:viewer('.$row_tras["c_nrotraslado"].',\'chat\', \'2\')" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Chat </a>
+                      <!--<a href="javascript:viewer('.$row_tras["c_nrotraslado"].',\'chat\', \'2\')" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Chat </a>-->
                     </div>
                 </td>';
             echo '<td>

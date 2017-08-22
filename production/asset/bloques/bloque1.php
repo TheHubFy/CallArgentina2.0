@@ -94,7 +94,7 @@
                     <div class="btn-group" role="group" aria-label="...">
                       <a href="javascript:viewer('.$row_deri["c_nroincidente"].',\'images\', 1)" class="btn btn-default" ><i class="glyphicon glyphicon-picture"></i> Generar visor </a>
                       <a href="javascript:viewer('.$row_deri["c_nroincidente"].',\'comentarios\', 1)" class="btn btn-default" ><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Comentarios </a>
-                      <a href="javascript:viewer('.$row_deri["c_nroincidente"].',\'chat\', 1)" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Chat </a>
+                      <!--<a href="javascript:viewer('.$row_deri["c_nroincidente"].',\'chat\', 1)" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Chat </a>-->
                     </div>
                 </td>';
             echo '<td>
