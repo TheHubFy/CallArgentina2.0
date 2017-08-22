@@ -16,7 +16,7 @@
                           <th>Traslado[Fecha]</th>
                           <th>Traslado[Motivo]</th>
                           <th>Traslado[Código]</th>
-                          
+
                           <th>Afiliado[DNI]</th>
                           <th>Afiliado[Número]</th>
                           <th>Afiliado[Nombre]</th>
@@ -59,7 +59,7 @@
 			SELECT * 	
 			FROM t_trasladoc
 			WHERE c_estado = 9
-			AND c_fechainicio >=  '2017-08-01'
+			AND c_fechainicio >=  '2017-05-17'
 			ORDER BY c_trfecha 
             ";
 //2017-05-17
