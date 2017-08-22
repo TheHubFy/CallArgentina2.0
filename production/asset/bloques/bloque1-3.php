@@ -15,14 +15,16 @@
                           <th>Traslado[Estado]</th>
                           <th>Traslado[Fecha]</th>
                           <th>Traslado[Motivo]</th>
-                          <th>Traslado[Código]</th>
+                          
+                          <th>Afiliado[Nombre]</th>
 
                           <th>Afiliado[DNI]</th>
                           <th>Afiliado[Número]</th>
-                          <th>Afiliado[Nombre]</th>
+
+                          <th>Traslado[Código]</th>
+                          
                           <th>Afiliado[Edad]</th>
                           <th>Afiliado[Género]</th>
-                          
                           <th>ORIGEN->[Diagnóstico]</th>
                           <th>ORIGEN->[Nombre]</th>
                           <th>ORIGEN->[Domicilio]</th>
@@ -78,10 +80,14 @@
             echo '<td>'.$estado.'</td>';
             echo '<td>'.$row_tras["c_fechainicio"].'</td>';
             echo '<td>'.$row_tras["c_trmotivo"].'</td>';           
-            echo '<td>'.$row_tras["c_codigoa"].'</td>';
+            
+            echo '<td>'.utf8_encode($row_tras['c_afnombre']).'</td>';
+            
             echo '<td>'.$row_tras["c_afnrodni"].'</td>';
             echo '<td>'.$row_tras["c_afnro"].'</td>';
-            echo '<td>'.utf8_encode($row_tras['c_afnombre']).'</td>';
+            
+            echo '<td>'.$row_tras["c_codigoa"].'</td>';
+
             echo '<td>'.$row_tras["c_afedad"].'</td>';
             echo '<td>'.$row_tras["c_afsexo"].'</td>';
             echo '<td>'.utf8_encode($row_tras['c_afdiagnostico']).'</td>';
