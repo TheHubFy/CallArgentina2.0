@@ -25,7 +25,7 @@
                       </thead>
                       <tbody>
                       <?php 
-                        $sql="SELECT * FROM t_gestion left JOIN t_usua ON id_usua = id_usua_gestion ORDER BY fecha_gestion DESC limit 0,30";
+                        $sql="SELECT * FROM t_gestion left JOIN t_usua ON id_usua = id_usua_gestion ORDER BY fecha_gestion DESC";
                         $deri=mysql_query($sql,$link);
                         $estado = '';
                         while($row_deri=mysql_fetch_array($deri)){ 

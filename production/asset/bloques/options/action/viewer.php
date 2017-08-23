@@ -153,6 +153,65 @@ error_reporting(0);
               </div><!-- /.modal-dialog -->
           </div>';
 
+    }else if($accion == "chatRechazado"){
+
+      $sql="SELECT c.nro_tablaorigen, c.mensaje, c.fechahora, u.nomb_usua 
+      FROM t_chat_historial c 
+      join t_usua u on c.usuario = u.id_usua 
+      WHERE c.nro_tablaorigen = '".$numgestion."' ORDER BY c.fechahora";
+
+$deri=mysql_query($sql,$link);   
+
+echo '<!-- Small modal -->
+      <div class="modal fade bs-example-modal-sm3" tabindex="-1" role="dialog" aria-labelledby="chat">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Call Argentina 2.0</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="table-responsive">
+                    <table bgcolor="#000000" class="table table-striped">
+                    <tr>
+                    <th>Numero</th>
+                    <th>Mensaje</th>
+                    <th>Fecha/Hora</th>
+                    <th>usuario</th>
+                    </tr>
+                    ';
+                    while($row_deri=mysql_fetch_array($deri)){
+                    echo '<tr>
+                            <td>'.$row_deri["nro_tablaorigen"].'</td>
+                            <td>'.utf8_decode($row_deri["mensaje"]).'</td>
+                            <td>'.$row_deri["fechahora"].'</td>
+                            <td>'.$row_deri["nomb_usua"].'</td>
+                          </tr>';
+                    }
+                    echo '
+                    </table> 
+                  </div>
+<hr>
+                  <form>
+                  <div class="form-group">
+                    <textarea class="form-control" id="chatComment" rows="3"></textarea>
+                    <input type="hidden" id="chatRechazado" value="chatRechazado">
+                  </div>
+                  
+                  <p class="help-block">Escriba su comentario y presione enviar el mismo quedará asociado a '.$numgestion.'</p>
+                  
+                  <a href="javascript:sendChat('.$numgestion.', \''.$posicion.'\')" class="btn btn-danger" ><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Rechazar </a>
+
+                  </form>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+      </div>';
+  
     }else{
     $sql="SELECT c.nro_tablaorigen, c.mensaje, c.fechahora, u.nomb_usua 
           FROM t_chat_historial c 

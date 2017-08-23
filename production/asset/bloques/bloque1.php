@@ -101,7 +101,7 @@
                     <div class="btn-group" role="group" aria-label="...">
                       <a href="javascript:setEstado('.$row_deri["c_nroincidente"].',\'t_incidentec\', \'derivaciones\', \'Autorizado\' )" class="btn btn-default" ><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Aprobado </a>
                       <a href="javascript:viewer('.$row_deri["c_nroincidente"].',\'chatObservado\', 1)" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Observado </a>
-                      <a href="javascript:setEstado('.$row_deri["c_nroincidente"].',\'t_incidentec\', \'derivaciones\', \'Rechazado\' )" class="btn btn-default" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Rechazado </a>
+                      <a href="javascript:viewer('.$row_deri["c_nroincidente"].',\'chatRechazado\', 1)" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Rechazado </a>
                     </div>
                   </td>';
         echo '</tr>';

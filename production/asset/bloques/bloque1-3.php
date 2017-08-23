@@ -120,7 +120,7 @@
                     <div class="btn-group" role="group" aria-label="...">
                       <a href="javascript:setEstado('.$row_tras["c_nrotraslado"].',\'t_trasladoc\', \'trasladoespecifico\', \'Autorizado\' )" class="btn btn-default" ><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Aprobado </a>
                       <a href="javascript:viewer('.$row_tras["c_nrotraslado"].',\'chatObservado\', \'3\')" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Observado </a>
-                      <a href="javascript:setEstado('.$row_tras["c_nrotraslado"].',\'t_trasladoc\', \'trasladoespecifico\', \'Rechazado\' )" class="btn btn-default" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Rechazado </a>
+                      <a href="javascript:viewer('.$row_tras["c_nrotraslado"].',\'chatRechazado\', \'3\')" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> New Rechazado </a>
                     </div>
                   </td>';
         echo '</tr>';

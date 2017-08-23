@@ -101,6 +101,7 @@ function setEstado ( idd , tabla, origen, estado){
 function sendChat(id,posicion){
 
     var chatObservado = $('#chatObservado').val();
+    var chatRechazado = $('#chatRechazado').val();
 
     var comment = $('#chatComment').val();
     
@@ -125,8 +126,16 @@ function sendChat(id,posicion){
                     }else if(posicion == "2"){
                         setEstado(id,'t_trasladoc', 'trasladosegundo', 'Observado' );
                     }else{
-
+                        setEstado(id,'t_trasladoc', 'trasladoespecificos', 'Rechazado' );
                     }
+                }else if(chatRechazado == 'chatRechazado'){
+                    if(posicion == "1"){
+                        setEstado(id,'t_incidentec', 'derivaciones', 'Rechazado' );
+                    }else if(posicion == "2"){
+                        setEstado(id,'t_trasladoc', 'trasladosegundo', 'Rechazado' );
+                    }else{
+                        setEstado(id,'t_trasladoc', 'trasladoespecificos', 'Rechazado' );
+                    }                    
                 }            
 
             $("#click_chat").trigger("click");
