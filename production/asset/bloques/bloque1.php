@@ -24,6 +24,9 @@
                           <th>Género</th>
                           <th>Contacto</th>
                           <th>Teléfono</th>
+
+                          <th>Código aut.</th>
+
                           <th>Diagnóstico</th>
                           <th>Motivo</th>
                           <th>Tipo móvil</th>
@@ -49,11 +52,11 @@
     $sql="SELECT * 
         FROM t_incidentec
         WHERE c_estado
-        IN ( 0, 3 ) 
+        IN ( 0, 3 ) and c_fechainicio >=  '2017-08-01'
         UNION ALL 
         SELECT * 
         FROM t_incidentec
-        WHERE c_fechainicio >=  '2017-05-17'
+        WHERE c_fechainicio >=  '2017-08-01'
         AND c_estado =9
         ORDER BY c_fechainicio";
 
@@ -74,6 +77,9 @@
             echo '<td>'.$row_deri["c_afsexo"].'</td>';
             echo '<td>'.$row_deri["c_afcontacto"].'</td>';
             echo '<td>'.$row_deri["c_aftelefono"].'</td>';
+
+            echo '<td>'.$row_deri["c_codigoa"].'</td>';
+
             echo '<td>'.$row_deri["c_afdiagnostico"].'</td>';
             echo '<td>'.$row_deri["c_afmotivo"].'</td>';
             echo '<td>'.$row_deri["c_aftipomovil"].'</td>';
@@ -99,9 +105,9 @@
                 </td>';
             echo '<td>
                     <div class="btn-group" role="group" aria-label="...">
-                      <a href="javascript:setEstado('.$row_deri["c_nroincidente"].',\'t_incidentec\', \'derivaciones\', \'Autorizado\' )" class="btn btn-default" ><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Aprobado </a>
-                      <a href="javascript:viewer('.$row_deri["c_nroincidente"].',\'chatObservado\', 1)" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Observado </a>
-                      <a href="javascript:viewer('.$row_deri["c_nroincidente"].',\'chatRechazado\', 1)" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Rechazado </a>
+                      <a href="javascript:setEstado('.$row_deri["c_nroincidente"].',\'t_incidentec\', \'derivaciones\', \'Autorizado\' )" class="btn btn-default" ><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Aprobar </a>
+                      <a href="javascript:viewer('.$row_deri["c_nroincidente"].',\'chatObservado\', 1)" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Observar </a>
+                      <a href="javascript:viewer('.$row_deri["c_nroincidente"].',\'chatRechazado\', 1)" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Rechazar </a>
                     </div>
                   </td>';
         echo '</tr>';

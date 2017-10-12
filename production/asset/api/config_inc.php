@@ -11,11 +11,17 @@ if($_SERVER['SERVER_NAME']=='localhost'){
     $baseapp = 'callArgentina';
     $hostapp = 'localhost';
 }else{
-/* Testing Call */
-    $userapp = 'call_argentina02';
-    $passapp = 'agaces2011';
-    $baseapp = 'call_argentina02';
-    $hostapp = 'localhost';
+    //Server Productivo
+     $userapp = 'autoriza';
+     $passapp = 'aut0r1za';
+     $baseapp = 'autoriza';
+     $hostapp = '200.41.168.147';
+
+// Testing Call DEFINITIVO TEST
+    //$userapp = 'call_argentina02';
+    //$passapp = 'agaces2011';
+    //$baseapp = 'call_argentina02';
+    //$hostapp = 'localhost';
 }
 /* Local
     $userapp = 'root';
@@ -23,9 +29,6 @@ if($_SERVER['SERVER_NAME']=='localhost'){
     $baseapp = 'callArgentina';
     $hostapp = 'localhost';
 */
-
-
-
     $_SESSION['userapp'] = $userapp;
     $_SESSION['passapp'] = $passapp;
     $_SESSION['baseapp'] = $baseapp;

@@ -24,7 +24,9 @@
                           <th>Traslado[Código]</th>
                           
                           <th>Afiliado[Edad]</th>
-                          <th>Afiliado[Género]</th> 
+                          <th>Afiliado[Género]</th>
+
+                          <th>Código aut.</th> 
                           
                           <th>ORIGEN->[Diagnóstico]</th>
                           <th>ORIGEN->[Nombre]</th>
@@ -57,12 +59,12 @@
 			FROM t_trasladoc
 			WHERE c_estado
 			IN ( 0, 3 ) 
-			AND c_tipo =  'T'
+			AND c_tipo =  'T' AND c_fechainicio >=  '2017-08-01'
 				UNION ALL 
 			SELECT * 	
 			FROM t_trasladoc
 			WHERE c_estado = 9
-			AND c_fechainicio >=  '2017-05-17'
+			AND c_fechainicio >=  '2017-08-01'
 			ORDER BY c_trfecha 
             ";
 //2017-05-17
@@ -91,6 +93,9 @@
             
             echo '<td>'.$row_tras["c_afedad"].'</td>';
             echo '<td>'.$row_tras["c_afsexo"].'</td>';
+
+            echo '<td>'.$row_tras["c_codigoa"].'</td>';
+
             echo '<td>'.utf8_encode($row_tras['c_afdiagnostico']).'</td>';
             echo '<td>'.utf8_encode($row_tras['c_ornombre']).'</td>';
             echo '<td>'.utf8_encode($c_ordomicilio).'</td>';
@@ -119,9 +124,9 @@
                 </td>';
             echo '<td>
                     <div class="btn-group" role="group" aria-label="...">
-                      <a href="javascript:setEstado('.$row_tras["c_nrotraslado"].',\'t_trasladoc\', \'trasladosegundo\', \'Autorizado\' )" class="btn btn-default" ><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Aprobado </a>
-                      <a href="javascript:viewer('.$row_tras["c_nrotraslado"].',\'chatObservado\', \'2\')" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Observado </a>
-                      <a href="javascript:viewer('.$row_tras["c_nrotraslado"].',\'chatRechazado\', \'2\')" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Rechazado </a>
+                      <a href="javascript:setEstado('.$row_tras["c_nrotraslado"].',\'t_trasladoc\', \'trasladosegundo\', \'Autorizado\' )" class="btn btn-default" ><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Aprobar </a>
+                      <a href="javascript:viewer('.$row_tras["c_nrotraslado"].',\'chatObservado\', \'2\')" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Observar </a>
+                      <a href="javascript:viewer('.$row_tras["c_nrotraslado"].',\'chatRechazado\', \'2\')" class="btn btn-default" ><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Rechazar </a>
                     </div>
                   </td>';
         echo '</tr>';

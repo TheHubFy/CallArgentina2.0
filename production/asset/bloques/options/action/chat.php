@@ -27,13 +27,15 @@
       $estado = $row_deri['c_estado'];     
     }
 
+    //$estado = mysql_result($deri);
+
 	$sql="INSERT INTO t_chat_historial (nro_tablaorigen, mensaje, usuario, nombreyapellido, tipo, estado) VALUES 
-                                       ('{$numgestion}', '{$comentario}', '{$idusua}', '{$nombreUsuario}', '{$tipo}', {$estado})";
+                                       ('{$numgestion}', '{$comentario}', '{$idusua}', '{$nombreUsuario}', '{$tipo}', {$estado} )";
 	
 	$resultado = mysql_query($sql, $link);
 
     if(!$resultado){
-        die(mysql_error() );
+        die(mysql_errno().' - {'.$posicion.'}. No se pudo insertar el registro. '.mysql_error().' - '.$sql );
     }else{
         auditoriaLog('Insertar', 'chat', $numgestion.$comentario, $link);
         echo '<script>alert("¡Comentario ingresado con éxito!");</script>';

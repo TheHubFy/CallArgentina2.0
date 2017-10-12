@@ -25,21 +25,44 @@
                       </thead>
                       <tbody>
                       <?php 
-                        $sql="SELECT * FROM t_gestion left JOIN t_usua ON id_usua = id_usua_gestion ORDER BY fecha_gestion DESC";
+                        //$sql="SELECT * FROM t_gestion left JOIN t_usua ON id_usua = id_usua_gestion WHERE fecha_gestion >= '2017-08-01' ORDER BY fecha_gestion DESC";
+                        $sql="SELECT 
+                              g.*, 
+                              t.c_afnombre as nameuno, 
+                              i.c_afnombre as namedos,
+                              i.c_codigoa as coduno, 
+                              t.c_codigoa as coddos 
+                              FROM t_gestion g 
+                              LEFT JOIN t_trasladoc t ON g.nro_gestion = t.c_nrotraslado
+                              LEFT JOIN t_incidentec i ON g.nro_gestion = i.c_nroincidente
+                              WHERE fecha_gestion >= '2017-08-01' ORDER BY fecha_gestion DESC";
+
                         $deri=mysql_query($sql,$link);
                         $estado = '';
                         while($row_deri=mysql_fetch_array($deri)){ 
-                                  switch ($row_deri['estado_gestion']){
-                                        case 7:
-                                            $estado = "APROBADO";
-                                            break;
-                                        case 8:
-                                            $estado = "RECHAZADO";    
-                                            break;
-                                        case 9:
-                                            $estado = "OBSERVADO";    
-                                            break;
+                                  
+                            switch ($row_deri['estado_gestion']){
+                                      case 7:
+                                      $estado = "APROBADO";
+                                      break;
+                                      case 8:
+                                      $estado = "RECHAZADO";    
+                                      break;
+                                      case 9:
+                                      $estado = "OBSERVADO";    
+                                      break;
                                     }
+                         if($row_deri['nameuno'] == null){
+                          $NameApellido = $row_deri['namedos'];
+                         }else{
+                          $NameApellido = $row_deri['nameuno'];
+                         }
+                         
+                         if($row_deri['coduno'] == null){
+                          $CodigoAut = $row_deri['coddos'];
+                         }else{
+                          $CodigoAut = $row_deri['coduno'];
+                         }
 
                         //Para Google Maps                                    
                         if($row_deri['tipo_gestion']!= 'derivaciones'){
@@ -48,26 +71,30 @@
                         }else{
                           $button = '';
                         }
+                        //$NameApellido = $row_deri['nombrepaciente'];
 
                         if($row_deri["tipo_gestion"] != 'DERIVACIONES'){
                           $tipGestion = 'traslado';
+                          $posicion = "1";
                         }else{
                           $tipGestion = 'derivaciones';
+                          $posicion = "2";
                         }
-                                                             
+                         //\'3\'                                    
                               echo '<tr>
                                       <td>'.$row_deri['nro_gestion'].'</td>
                                       <td>'.date("d/m/Y", strtotime($row_deri['fecha_gestion'])).'</td>
                                       <td>'.strtoupper($row_deri['tipo_gestion']).'</td>
                                       <td>'.$estado.'</td>
-                                      <td>'.wordwrap($row_deri['nombrepaciente'], 10, "<br />\n").'</td>
-                                      <td>'.$row_deri['clave_gestion'].'</td>
+                                      <td>'.wordwrap($NameApellido, 10, "<br />\n").'</td>
+                                      <td>'.$CodigoAut.'</td>
                                       <td>
-<a href="javascript:viewer('.$row_deri["nro_gestion"].',\'chat\', \'3\')"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Chat </a>                                      
+
+<a href="javascript:viewer('.$row_deri["nro_gestion"].',\'chat\', '.$posicion.')"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Chat </a>                                      
                                       '.wordwrap($row_deri['obs_gestion'], 20, "<br />\n").'</td>
                                       <td>'.$row_deri['nomb_usua'].'</td>
                                       <td> 
-                                        <a href="http://call-argentina.com.ar/aprobaciones/derivacion/pdf_gestion.php?idgestion='.$row_deri["id_gestion"].'&tipogestion='.$tipGestion.'" target="_blank">
+                                        <a href="http://call-argentina.com.ar/aprobaciones/derivacion/pdf_gestion.php?idgestion='.$row_deri["id_gestion"].'&tipogestion='.$row_deri["tipo_gestion"].'" target="_blank">
                                           <i id="icon-new" class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                         </a>
                                         '.$button.'

@@ -52,7 +52,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Comentarios <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea name="comments" class="form-control" rows="3"></textarea>
+                          <textarea name="comments" class="form-control" rows="3" placeholder="Debés explicar cual es el error, no serán válidos los mensajes que dicen (Error en gestión 12111 - Nombre y Apellido). ¿Cuál es el error?"></textarea>
                         </div>
                       </div>                      
                       <div class="ln_solid"></div>

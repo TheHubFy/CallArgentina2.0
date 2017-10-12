@@ -12,7 +12,7 @@
     if(isset($_POST["comments"])){ $comments = $_POST["comments"]; }
 
 
-    $destinatario = "lcondori@gmail.com; jrossotti@gmail.com"; 
+    $destinatario = "lcondori@gmail.com"; 
     $asunto = "Call-Argentina envío un mensaje!"; 
     $cuerpo = ' <html> 
                     <head> 

@@ -34,7 +34,8 @@ function visualizar(v){
 }
 
 function lock(){
-    window.location = "usuario.php";
+    //window.location = "usuario.php";
+    location.reload();
 }
 
 function LogOut(){

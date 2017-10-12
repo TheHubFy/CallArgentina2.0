@@ -30,16 +30,17 @@
       $atributo = '';
     }
 
-    $sql="SELECT c_afnombre, c_observa FROM ".$origenTable." WHERE  ".$atributo." = {$numgestion}";
+    $sql="SELECT c_afnombre, c_observa, c_codigoa FROM ".$origenTable." WHERE  ".$atributo." = {$numgestion}";
 
     $deri=mysql_query($sql,$link) or die (mysql_error());
     while($row_deri=mysql_fetch_array($deri)){
       $c_afnombre = $row_deri['c_afnombre'];
-      $observaciones = $row_deri['c_observa'];     
+      $observaciones = $row_deri['c_observa'];
+      $c_codigoa = $row_deri['c_codigoa'];     
     }
 
-    $sql="INSERT INTO t_gestion (tipo_gestion, nro_gestion, nombrepaciente, estado_gestion, obs_gestion, id_usua_gestion, datosorigen_gestion) VALUES 
-        ('{$proceso}', {$numgestion}, '{$c_afnombre}', {$estado}, '{$observaciones}', {$idusua}, '{$hostDDR}')";
+    $sql="INSERT INTO t_gestion (tipo_gestion, clave_gestion, nro_gestion, nombrepaciente, estado_gestion, obs_gestion, id_usua_gestion, datosorigen_gestion) VALUES 
+        ('{$proceso}', {$c_codigoa}, {$numgestion}, '{$c_afnombre}', {$estado}, '{$observaciones}', {$idusua}, '{$hostDDR}')";
 
     $resultado = mysql_query($sql, $link);
 
